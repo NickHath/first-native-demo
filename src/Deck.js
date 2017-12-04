@@ -34,6 +34,14 @@ class Deck extends Component {
     this.state = { panResponder, position, index: 0 };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+        this.setState({
+            index: 0
+        })
+    }
+  }
+
   componentWillUpdate() {
       UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
       LayoutAnimation.spring();
@@ -117,7 +125,7 @@ class Deck extends Component {
 const styles = {
     cardStyle: {
         position: "absolute",
-        width: SCREEN_WIDTH
+        width: SCREEN_WIDTH,
     }
 };
 
